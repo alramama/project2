@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for film in film_list %}
+    {% for colname in film.column_set.all  %}
+        <p>{{colname}}</p>
+    {% endfor %}
+{% endfor %}
+
+
+<div class="container d-flex mt-10" style="width: 150%;">
+    <div class="col">
+        <h1 class="text-center"> BIDS</h1>
+        <table class="table table-striped mt-5">
+            <thead>
+                <tr>
+                    {% comment %} <th>#</th> {% endcomment %}
+                    {% comment %} <th>#</th> {% endcomment %}
+                    <th class="text-center" scope="col">Reference No.</th>
+                    <th class="text-center" scope="col">Bid Info.</th>
+                    <th class="text-center" scope="col">Bid Docu.</th>
+                    <th class="text-center" scope="col">Update</th>
+                    <th class="text-center" scope="col">Delete</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                {% for bid in bid_list %}
+                <tr>
+                    {% comment %} <th scope="row">{{forloop.counter}}</th> {% endcomment %}
+                    <td class="text-center">{{bid.reference_no}}</td>
+                    <td>{% if bid.bid_information %}<img src="/media/{{ bid.bid_information }}" class="img img-responsive" width="900px">{% endif %}</td>
+                    <td class="text-center" scope="col" ><a href="{{ bid.bid_documnts.url}}"download="">Download</a></td>
+
+                    <td><a href="{% url 'bids:bid_update' bid.reference_no %} ">Update</a></td>
+                    <td><a href="{% url 'bids:bid_delete' bid.reference_no %}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        
+            </tbody>
+        </table>    
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'bids:bid_create' %}" class="d-block btn btn-primary btn-lg my-5">Add New</a>
+        </div>
+    </div>
+        
+</div>
+
+{% endblock content %}
