@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-4_tvwl^#9jyoccm(=xvm_&3fjnc15d1kyks0d#=my+x=^1da=u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [alramama-crud.herokuapp.com]
+ALLOWED_HOSTS = ["alramama-crud.herokuapp.com"]
 
 
 # Application definition
