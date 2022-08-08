@@ -32,7 +32,7 @@
                     {% comment %} <th scope="row">{{forloop.counter}}</th> {% endcomment %}
                     <td class="text-center">{{bid.reference_no}}</td>
                     <td>{% if bid.bid_information %}<img src="/media/{{ bid.bid_information }}" class="img img-responsive" width="900px">{% endif %}</td>
-                    <td class="text-center" scope="col" ><a href="{{ bid.bid_documnts.url}}"download="">Download</a></td>
+                    <td class="text-center" scope="col" ><a href="{{ bids.bid_documnts.url}}"download="{{ bids.bid_documnts.url}}">Download</a></td>
 
                     <td><a href="{% url 'bids:bid_update' bid.reference_no %} ">Update</a></td>
                     <td><a href="{% url 'bids:bid_delete' bid.reference_no %}">Delete</a></td>
